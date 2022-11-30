@@ -91,12 +91,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ResenaController.cs" />
+    <Compile Include="Controllers\RolController.cs" />
     <Compile Include="Controllers\ServicioController.cs" />
     <Compile Include="Data\Conexion.cs" />
+    <Compile Include="Data\ResenaData.cs" />
+    <Compile Include="Data\RolData.cs" />
     <Compile Include="Data\ServicioData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Resena.cs" />
+    <Compile Include="Models\Rol.cs" />
     <Compile Include="Models\Servicio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

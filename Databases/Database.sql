@@ -3,6 +3,11 @@ GO
 USE ServiceFinder
 GO
 
+CREATE TABLE Rol(
+	idRol int primary key identity NOT NULL,
+	rol varchar(100) NULL,
+)
+
 CREATE TABLE Usuario(
 	idUsuario int primary key identity NOT NULL,
 	correo int NULL,
@@ -44,8 +49,27 @@ CREATE TABLE Servicio(
 
 CREATE TABLE Resena(
 	idResena int primary key identity NOT NULL,
-	comentario varchar(500) NULL,
 	calificacion float NULL,
-	idUsuario int NULL,
+	comentario varchar(500) NULL,
 	idProfesionista int NULL,
+	idCliente int NULL,
+)
+
+CREATE TABLE Recibo(
+	idRecibo int primary key identity NOT NULL,
+	total decimal(15,2) NULL,
+	idServicio int NULL,
+	idCliente int NULL,
+	idProfesionista int NULL,
+	idSolicitud int NULL,
+)
+
+CREATE TABLE Solicitud(
+	idSolicitud int primary key identity NOT NULL,
+	fecha datetime NULL,
+	descripcion varchar(5000) NULL,
+	telefono varchar(30) NULL,
+	idCliente int NULL,
+	idProfesionista int NULL,
+	idEstatus int NULL,
 )
