@@ -71,3 +71,7 @@ C:\Users\gaelt\source\repos\ServicioApi\obj\Debug\ServicioApi.csproj.CoreCompile
 C:\Users\gaelt\source\repos\ServicioApi\obj\Debug\ServicioApi.csproj.CopyComplete
 C:\Users\gaelt\source\repos\ServicioApi\obj\Debug\ServicioApi.dll
 C:\Users\gaelt\source\repos\ServicioApi\obj\Debug\ServicioApi.pdb
+C:\Users\Sistemas\Documents\Visual Studio 2022\ServiceFinder\obj\Debug\ServicioApi.csproj.AssemblyReference.cache
+C:\Users\Sistemas\Documents\Visual Studio 2022\ServiceFinder\obj\Debug\ServicioApi.csproj.CoreCompileInputs.cache
+C:\Users\Sistemas\Documents\Visual Studio 2022\ServiceFinder\obj\Debug\ServicioApi.dll
+C:\Users\Sistemas\Documents\Visual Studio 2022\ServiceFinder\obj\Debug\ServicioApi.pdb
