@@ -10,7 +10,7 @@ CREATE TABLE Rol(
 
 CREATE TABLE Usuario(
 	idUsuario int primary key identity NOT NULL,
-	correo int NULL,
+	correo varchar(100) NULL,
 	contrasenia varchar(100) NULL,
 	nombre varchar(100) NULL,
 	apellidoPaterno varchar(100) NULL,
