@@ -98,12 +98,15 @@
     <Compile Include="Data\ResenaData.cs" />
     <Compile Include="Data\RolData.cs" />
     <Compile Include="Data\ServicioData.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Data\UsuarioData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Resena.cs" />
     <Compile Include="Models\Rol.cs" />
     <Compile Include="Models\Servicio.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
