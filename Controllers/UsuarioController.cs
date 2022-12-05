@@ -37,10 +37,6 @@ namespace ServicioApi.Data
             return UsuarioData.Eliminar(idUsuario);
         }
 
-        public List<Usuario> Get(string correo, string contrasenia)
-        {
-            return UsuarioData.Login(correo, contrasenia);
-        }
 
     }
 }
