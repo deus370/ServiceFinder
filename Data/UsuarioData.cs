@@ -165,15 +165,17 @@ namespace ServicioApi.Data
             }
         }
 
-        public static List<Usuario> Login(string correo, string contrasenia)
+        public static List<Usuario> LoginUser(Usuario ousuario)
         {
             List<Usuario> ListaUsuario = new List<Usuario>();
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
-                SqlCommand cmd = new SqlCommand("login", oConexion);
+                SqlCommand cmd = new SqlCommand("loginUser", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@correo", correo);
-                cmd.Parameters.AddWithValue("@contrasenia", contrasenia);
+                cmd.Parameters.AddWithValue("@correo", ousuario.correo);
+                cmd.Parameters.AddWithValue("@contrasenia", ousuario.contrasenia);
+
+
                 try
                 {
                     oConexion.Open();
@@ -206,5 +208,8 @@ namespace ServicioApi.Data
                 }
             }
         }
+
+
     }
+    
 }
