@@ -21,8 +21,6 @@ namespace ServicioApi.Data
                 cmd.Parameters.AddWithValue("@apeMaterno", oUsuario.apellidoMaterno);
                 cmd.Parameters.AddWithValue("@correo", oUsuario.correo);
                 cmd.Parameters.AddWithValue("@contrasenia", oUsuario.contrasenia);
-                cmd.Parameters.AddWithValue("@estatus", oUsuario.estatus);
-                cmd.Parameters.AddWithValue("@idUsuario", oUsuario.idUsuario);
 
                 try
                 {

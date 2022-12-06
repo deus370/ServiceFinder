@@ -92,14 +92,12 @@ create procedure [dbo].[rsn_registrar](
 	@apePaterno VARCHAR(50),
 	@apeMaterno VARCHAR(50),
 	@correo VARCHAR(50),
-	@contrasenia VARCHAR(50),
-	@estatus VARCHAR(50),
-	@idUsuario int
+	@contrasenia VARCHAR(50)
 )
 as
 begin
 
-insert into Usuario(nombre,apellidoPaterno,apellidoMaterno,correo,contrasenia,estatus)
+insert into Usuario(nombre,apellidoPaterno,apellidoMaterno,correo,contrasenia,estatus, idRol)
 values
 (
 	@nombre,
@@ -107,10 +105,16 @@ values
 	@apeMaterno,
 	@correo,
 	@contrasenia,
-	@estatus)
+	1,
+	2
+)
+
+DECLARE @idUser int;
+SET @idUser = (SELECT MAX(idUsuario) AS LastID FROM Usuario);
 
 insert into Cliente(idUsuario)
 values
-(@idUsuario)
+(@idUser)
 end
+
 GO
