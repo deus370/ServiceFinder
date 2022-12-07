@@ -96,12 +96,15 @@
     <Compile Include="Controllers\RolController.cs" />
     <Compile Include="Controllers\ServicioController.cs" />
     <Compile Include="Controllers\SolicitudController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Data\ClienteData.cs" />
     <Compile Include="Data\Conexion.cs" />
     <Compile Include="Data\ResenaData.cs" />
     <Compile Include="Data\RolData.cs" />
     <Compile Include="Data\ServicioData.cs" />
     <Compile Include="Data\SolicitudData.cs" />
+    <Compile Include="Data\UsuarioData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

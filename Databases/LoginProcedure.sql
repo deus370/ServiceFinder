@@ -10,8 +10,8 @@ go
 go
 
 create procedure login(
-@correo varchar,
-@contrasenia varchar
+@correo varchar(100),
+@contrasenia varchar(100)
 )
 as
 begin

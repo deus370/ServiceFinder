@@ -17,12 +17,10 @@ namespace ServicioApi.Data
                 SqlCommand cmd = new SqlCommand("rsn_registrar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@nombre", oUsuario.nombre);
-                cmd.Parameters.AddWithValue("@apePaterno", oUsuario.apePaterno);
-                cmd.Parameters.AddWithValue("@apeMaterno", oUsuario.apeMaterno);
+                cmd.Parameters.AddWithValue("@apePaterno", oUsuario.apellidoPaterno);
+                cmd.Parameters.AddWithValue("@apeMaterno", oUsuario.apellidoMaterno);
                 cmd.Parameters.AddWithValue("@correo", oUsuario.correo);
                 cmd.Parameters.AddWithValue("@contrasenia", oUsuario.contrasenia);
-                cmd.Parameters.AddWithValue("@estatus", oUsuario.estatus);
-                cmd.Parameters.AddWithValue("@idUsuario", oUsuario.idUsuario);
 
                 try
                 {
@@ -45,8 +43,8 @@ namespace ServicioApi.Data
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@idUsuario", oUsuario.idUsuario);
                 cmd.Parameters.AddWithValue("@nombre", oUsuario.nombre);
-                cmd.Parameters.AddWithValue("@apePaterno", oUsuario.apePaterno);
-                cmd.Parameters.AddWithValue("@apeMaterno", oUsuario.apeMaterno);
+                cmd.Parameters.AddWithValue("@apePaterno", oUsuario.apellidoPaterno);
+                cmd.Parameters.AddWithValue("@apeMaterno", oUsuario.apellidoMaterno);
                 cmd.Parameters.AddWithValue("@correo", oUsuario.correo);
                 cmd.Parameters.AddWithValue("@contrasenia", oUsuario.contrasenia);
                 cmd.Parameters.AddWithValue("@estatus", oUsuario.estatus);
@@ -86,8 +84,8 @@ namespace ServicioApi.Data
                             {
                                 idUsuario = Convert.ToInt32(dr["idUsuario"]),
                                 nombre = dr["nombre"].ToString(),
-                                apePaterno = dr["apellidoPaterno"].ToString(),
-                                apeMaterno = dr["apellidoMaterno"].ToString(),
+                                apellidoPaterno = dr["apellidoPaterno"].ToString(),
+                                apellidoMaterno = dr["apellidoMaterno"].ToString(),
                                 correo = dr["correo"].ToString(),
                                 contrasenia = dr["contrasenia"].ToString(),
                                 estatus = Convert.ToInt32(dr["estatus"])
