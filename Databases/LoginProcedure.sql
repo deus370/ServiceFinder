@@ -2,14 +2,14 @@ go
 use ServiceFinder
 go
 
-IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'login')
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'loginUser')
 DROP PROCEDURE login
 
 go
 
 go
 
-create procedure login(
+create procedure loginUser(
 @correo varchar(100),
 @contrasenia varchar(100)
 )
