@@ -8,7 +8,7 @@ GO
 
 --******** PROCEDIMIENTOS PARA ELIMINAR CLIENTE ********--
 
-create procedure [dbo].[rsn_eliminar](
+create procedure [dbo].[cli_eliminar](
 @idUsuario int
 )
 as
@@ -25,7 +25,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create procedure [dbo].[rsn_listar]
+create procedure [dbo].[cli_listar]
 as
 begin
 
@@ -40,7 +40,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-create procedure [dbo].[rsn_modificar](
+create procedure [dbo].[cli_modificar](
 	@idUsuario int,
 	@nombre VARCHAR(50),
 	@apePaterno VARCHAR(50),
@@ -71,7 +71,7 @@ GO
 
 --******** PROCEDIMIENTOS PARA OBTENER CLIENTE ********--
 
-create procedure [dbo].[rsn_obtenerCliente](@idCliente int)
+create procedure [dbo].[cli_obtenerCliente](@idCliente int)
 as
 begin
 
@@ -87,7 +87,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 --******** PROCEDIMIENTOS PARA REGISTRAR CLIENTE ********--
 
-create procedure [dbo].[rsn_registrar](
+create procedure [dbo].[cli_registrar](
 	@nombre VARCHAR(50),
 	@apePaterno VARCHAR(50),
 	@apeMaterno VARCHAR(50),
