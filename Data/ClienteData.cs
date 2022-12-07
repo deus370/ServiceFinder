@@ -14,7 +14,7 @@ namespace ServicioApi.Data
         {
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
-                SqlCommand cmd = new SqlCommand("rsn_registrar", oConexion);
+                SqlCommand cmd = new SqlCommand("cli_registrar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@nombre", oUsuario.nombre);
                 cmd.Parameters.AddWithValue("@apePaterno", oUsuario.apellidoPaterno);
@@ -39,7 +39,7 @@ namespace ServicioApi.Data
         {
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
-                SqlCommand cmd = new SqlCommand("rsn_modificar", oConexion);
+                SqlCommand cmd = new SqlCommand("cli_modificar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@idUsuario", oUsuario.idUsuario);
                 cmd.Parameters.AddWithValue("@nombre", oUsuario.nombre);
@@ -67,7 +67,7 @@ namespace ServicioApi.Data
             List<Usuario> oListaUsuario = new List<Usuario>();
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
-                SqlCommand cmd = new SqlCommand("rsn_listar", oConexion);
+                SqlCommand cmd = new SqlCommand("cli_listar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 try
@@ -106,7 +106,7 @@ namespace ServicioApi.Data
         {
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
-                SqlCommand cmd = new SqlCommand("rsn_eliminar", oConexion);
+                SqlCommand cmd = new SqlCommand("cli_eliminar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@idUsuario", id);
 
