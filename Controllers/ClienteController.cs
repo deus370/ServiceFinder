@@ -15,6 +15,12 @@ namespace ServicioApi.Controllers
         {
             return ClienteData.Listar();
         }
+
+        public List<Usuario> Get(int id)
+        {
+            return ClienteData.Obtener(id);
+        }
+
         // POST api/<controller>
         public bool Post([FromBody] Usuario oUsuario)
         {

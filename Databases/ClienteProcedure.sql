@@ -118,3 +118,11 @@ values
 end
 
 GO
+
+create procedure cli_obtenerPorUsuario(@idUsuario int)
+as
+begin
+
+select * from Usuario us join Cliente cl on us.idUsuario = cl.idUsuario  where cl.idUsuario = @idUsuario
+
+end

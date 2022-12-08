@@ -33,9 +33,9 @@ namespace ServicioApi.Controllers
             return ProfesionistaData.Modificar(prof);
         }
 
-        public bool Delete(int idProf)
+        public bool Delete(int idProf, int iduser)
         {
-            return ProfesionistaData.Eliminar(idProf);
+            return ProfesionistaData.Eliminar(idProf, iduser);
         }
     }
 }

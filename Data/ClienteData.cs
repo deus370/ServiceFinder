@@ -160,6 +160,48 @@ namespace ServicioApi.Data
             }
         }
 
+        public static List<Usuario> Obtener(int idUsuario)
+        {
+            List<Usuario> ListaProf = new List<Usuario>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
+            {
+                SqlCommand cmd = new SqlCommand("prof_obtenerPorUsuario", oConexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+
+                try
+                {
+                    oConexion.Open();
+                    cmd.ExecuteNonQuery();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+
+                        while (dr.Read())
+                        {
+                            ListaProf.Add(new Usuario()
+                            {
+                                idUsuario = Convert.ToInt32(dr["idUsuario"]),
+                                nombre = dr["nombre"].ToString(),
+                                apellidoPaterno = dr["apellidoPaterno"].ToString(),
+                                apellidoMaterno = dr["apellidoMaterno"].ToString(),
+                                correo = dr["correo"].ToString(),
+                                contrasenia = dr["contrasenia"].ToString(),
+                                estatus = Convert.ToInt32(dr["estatus"]),
+                                idRol = Convert.ToInt32(dr["idRol"]),
+                            });
+                        }
+
+                    }
+                    return ListaProf;
+                }
+                catch (Exception ex)
+                {
+                    return ListaProf;
+                }
+            }
+        }
+
     }
 
 
