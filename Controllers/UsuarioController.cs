@@ -32,15 +32,11 @@ namespace ServicioApi.Data
             return UsuarioData.Modificar(usuario);
         }
 
-        public bool Put([FromBody] int idUsuario)
+        public bool Delete(int idUsuario)
         {
             return UsuarioData.Eliminar(idUsuario);
         }
 
-        public List<Usuario> Get(string correo, string contrasenia)
-        {
-            return UsuarioData.Login(correo, contrasenia);
-        }
 
     }
 }

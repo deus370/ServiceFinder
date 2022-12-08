@@ -8,19 +8,22 @@ using System.Web;
 
 namespace ServicioApi.Data
 {
-    public class UsuarioData
+    public class ProfesionistaData
     {
-        public static bool Registrar(Usuario oUsuario)
+        public static bool Registrar(Profesionista oProf)
         {
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
-                SqlCommand cmd = new SqlCommand("user_registrar", oConexion);
+                SqlCommand cmd = new SqlCommand("prof_registrar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@correo", oUsuario.correo);
-                cmd.Parameters.AddWithValue("@contrasenia", oUsuario.contrasenia);
-                cmd.Parameters.AddWithValue("@nombre", oUsuario.nombre);
-                cmd.Parameters.AddWithValue("@apellidoPaterno", oUsuario.apellidoPaterno);
-                cmd.Parameters.AddWithValue("@apellidoMaterno", oUsuario.apellidoMaterno);
+                cmd.Parameters.AddWithValue("@descripcion", oProf.descripcion);
+                cmd.Parameters.AddWithValue("@idProfesion", oProf.idProfesion);
+
+                cmd.Parameters.AddWithValue("@correo", oProf.correo);
+                cmd.Parameters.AddWithValue("@contrasenia", oProf.contrasenia);
+                cmd.Parameters.AddWithValue("@nombre", oProf.nombre);
+                cmd.Parameters.AddWithValue("@apellidoPaterno", oProf.apellidoPaterno);
+                cmd.Parameters.AddWithValue("@apellidoMaterno", oProf.apellidoMaterno);
                 try
                 {
                     oConexion.Open();
@@ -35,20 +38,22 @@ namespace ServicioApi.Data
             }
         }
 
-        public static bool Modificar(Usuario oUsuario)
+        public static bool Modificar(Profesionista oProf)
         {
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
-                SqlCommand cmd = new SqlCommand("user_modificar", oConexion);
+                SqlCommand cmd = new SqlCommand("prof_modificar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@idUsuario", oUsuario.idUsuario);
-                cmd.Parameters.AddWithValue("@correo", oUsuario.correo);
-                cmd.Parameters.AddWithValue("@contrasenia", oUsuario.contrasenia);
-                cmd.Parameters.AddWithValue("@nombre", oUsuario.nombre);
-                cmd.Parameters.AddWithValue("@apellidoPaterno", oUsuario.apellidoPaterno);
-                cmd.Parameters.AddWithValue("@apellidoMaterno", oUsuario.apellidoMaterno);
-                cmd.Parameters.AddWithValue("@estatus", oUsuario.estatus);
-                cmd.Parameters.AddWithValue("@idRol", oUsuario.idRol);
+                cmd.Parameters.AddWithValue("@idProfesionista", oProf.idProfesionista);
+                cmd.Parameters.AddWithValue("@descripcion", oProf.descripcion);
+                cmd.Parameters.AddWithValue("@idProfesion", oProf.idProfesion);
+                cmd.Parameters.AddWithValue("@idUsuario", oProf.idUsuario);
+
+                cmd.Parameters.AddWithValue("@correo", oProf.correo);
+                cmd.Parameters.AddWithValue("@contrasenia", oProf.contrasenia);
+                cmd.Parameters.AddWithValue("@nombre", oProf.nombre);
+                cmd.Parameters.AddWithValue("@apellidoPaterno", oProf.apellidoPaterno);
+                cmd.Parameters.AddWithValue("@apellidoMaterno", oProf.apellidoMaterno);
 
                 try
                 {
@@ -63,12 +68,12 @@ namespace ServicioApi.Data
             }
         }
 
-        public static List<Usuario> Listar()
+        public static List<Profesionista> Listar()
         {
-            List<Usuario> ListaUsuario = new List<Usuario>();
+            List<Profesionista> ListaProf = new List<Profesionista>();
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
-                SqlCommand cmd = new SqlCommand("user_listar", oConexion);
+                SqlCommand cmd = new SqlCommand("prof_listar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 try
                 {
@@ -80,34 +85,38 @@ namespace ServicioApi.Data
 
                         while (dr.Read())
                         {
-                            ListaUsuario.Add(new Usuario()
+                            ListaProf.Add(new Profesionista()
                             {
+                                idProfesionista = Convert.ToInt32(dr["idProfesionista"]),
+                                descripcion = dr["descripcion"].ToString(),
+                                idProfesion = Convert.ToInt32(dr["idProfesion"]),
+                                estatus = Convert.ToInt32(dr["estatus"]),
                                 idUsuario = Convert.ToInt32(dr["idUsuario"]),
+
                                 correo = dr["correo"].ToString(),
                                 contrasenia = dr["contrasenia"].ToString(),
                                 nombre = dr["nombre"].ToString(),
                                 apellidoPaterno = dr["apellidoPaterno"].ToString(),
                                 apellidoMaterno = dr["apellidoMaterno"].ToString(),
-                                estatus = Convert.ToInt32(dr["estatus"]),
                                 idRol = Convert.ToInt32(dr["idRol"]),
                             });
                         }
 
                     }
-                    return ListaUsuario;
+                    return ListaProf;
                 }
                 catch (Exception ex)
                 {
-                    return ListaUsuario;
+                    return ListaProf;
                 }
             }
         }
-        public static List<Usuario> Obtener(int idUsuario)
+        public static List<Profesionista> Obtener(int idUsuario)
         {
-            List<Usuario> ListaUsuario = new List<Usuario>();
+            List<Profesionista> ListaProf = new List<Profesionista>();
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
-                SqlCommand cmd = new SqlCommand("user_obtener", oConexion);
+                SqlCommand cmd = new SqlCommand("prof_obtenerPorUsuario", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
 
@@ -121,36 +130,42 @@ namespace ServicioApi.Data
 
                         while (dr.Read())
                         {
-                            ListaUsuario.Add(new Usuario()
+                            ListaProf.Add(new Profesionista()
                             {
+                                idProfesionista = Convert.ToInt32(dr["idProfesionista"]),
+                                descripcion = dr["descripcion"].ToString(),
+                                idProfesion = Convert.ToInt32(dr["idProfesion"]),
+                                estatus = Convert.ToInt32(dr["estatus"]),
                                 idUsuario = Convert.ToInt32(dr["idUsuario"]),
+
                                 correo = dr["correo"].ToString(),
                                 contrasenia = dr["contrasenia"].ToString(),
                                 nombre = dr["nombre"].ToString(),
                                 apellidoPaterno = dr["apellidoPaterno"].ToString(),
                                 apellidoMaterno = dr["apellidoMaterno"].ToString(),
-                                estatus = Convert.ToInt32(dr["estatus"]),
                                 idRol = Convert.ToInt32(dr["idRol"]),
                             });
                         }
 
                     }
-                    return ListaUsuario;
+                    return ListaProf;
                 }
                 catch (Exception ex)
                 {
-                    return ListaUsuario;
+                    return ListaProf;
                 }
             }
         }
 
-        public static bool Eliminar(int idUsuario)
+        public static bool Eliminar(int idProfesionista, int idUsuario)
         {
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
-                SqlCommand cmd = new SqlCommand("user_eliminar", oConexion);
+                SqlCommand cmd = new SqlCommand("prof_eliminar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idProfesionista", idProfesionista);
                 cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+
 
                 try
                 {
@@ -208,8 +223,5 @@ namespace ServicioApi.Data
                 }
             }
         }
-
-
     }
-    
 }

@@ -73,3 +73,10 @@ CREATE TABLE Solicitud(
 	idProfesionista int NULL,
 	idEstatus int NULL,
 )
+
+CREATE TABLE Logs(
+	idLog int primary key identity NOT NULL,
+	fecha datetime NULL,
+	descripcion varchar(5000) NULL,
+	idUsuario int Null
+)
