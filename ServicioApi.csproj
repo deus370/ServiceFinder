@@ -92,7 +92,9 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\ImagenController.cs" />
     <Compile Include="Controllers\LogsController.cs" />
+    <Compile Include="Controllers\ProfesionController.cs" />
     <Compile Include="Controllers\ProfesionistaController.cs" />
     <Compile Include="Controllers\ResenaController.cs" />
     <Compile Include="Controllers\RolController.cs" />
@@ -102,7 +104,9 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Data\ClienteData.cs" />
     <Compile Include="Data\Conexion.cs" />
+    <Compile Include="Data\ImagenData.cs" />
     <Compile Include="Data\LogsData.cs" />
+    <Compile Include="Data\ProfesionData.cs" />
     <Compile Include="Data\ProfesionistaData.cs" />
     <Compile Include="Data\ResenaData.cs" />
     <Compile Include="Data\RolData.cs" />
@@ -113,7 +117,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Imagen.cs" />
     <Compile Include="Models\Logs.cs" />
+    <Compile Include="Models\Profesion.cs" />
     <Compile Include="Models\Profesionista.cs" />
     <Compile Include="Models\Resena.cs" />
     <Compile Include="Models\Rol.cs" />
