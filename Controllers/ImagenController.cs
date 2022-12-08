@@ -11,17 +11,17 @@ namespace ServicioApi.Controllers
     public class ImagenController : ApiController
     {
         // GET: api/Imagen
-        public HttpResponseMessage Get([FromBody] int idProfesionista)
+        public HttpResponseMessage Get([FromUri] int id)
         {
             HttpResponseMessage response = new HttpResponseMessage();
-            Byte[] b = (ImagenData.ObtenerImagen(idProfesionista));
+            byte[] b = (ImagenData.ObtenerImagen(id));
             if (b == null)
             {
                 response.StatusCode = HttpStatusCode.NotFound;
                 return response;
             }
-            Request.Content.Headers.ContentType = new MediaTypeHeaderValue("image/png");
             response.Content = new ByteArrayContent(b);
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/png");
             response.Content.LoadIntoBufferAsync(b.Length).Wait();
             return response;
         }
