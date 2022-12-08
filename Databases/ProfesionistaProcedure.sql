@@ -116,6 +116,7 @@ end
 --******** PROCEDIMIENTOS PARA LISTAR TODO********--
 
 go
+
 create procedure prof_listar
 as
 begin
@@ -146,6 +147,18 @@ estatus = 0
 where idUsuario = @idUsuario
 
 end
+
+go
+
+
+create procedure prof_obtenerPorUsuario(@idUsuario int)
+as
+begin
+
+select * from Usuario us join Profesionista pr on us.idUsuario = pr.idUsuario  where pr.idUsuario = @idUsuario
+end
+
+--******** PROCEDIMIENTOS PARA LISTAR TODO********--
 
 go
 

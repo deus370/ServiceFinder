@@ -116,7 +116,7 @@ namespace ServicioApi.Data
             List<Profesionista> ListaProf = new List<Profesionista>();
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
-                SqlCommand cmd = new SqlCommand("user_obtener", oConexion);
+                SqlCommand cmd = new SqlCommand("prof_obtenerPorUsuario", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
 
