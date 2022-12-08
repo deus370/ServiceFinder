@@ -10,6 +10,43 @@ namespace ServicioApi.Data
 {
     public class ClienteData
     {
+
+        public static List<Cliente> Obtener(int idUsuario)
+        {
+            List<Cliente> listaCliente = new List<Cliente>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
+            {
+                SqlCommand cmd = new SqlCommand("cli_obtenerCliente", oConexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+
+                try
+                {
+                    oConexion.Open();
+                    cmd.ExecuteNonQuery();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+
+                        while (dr.Read())
+                        {
+                            listaCliente.Add(new Cliente()
+                            {
+                                idUsuario = Convert.ToInt32(dr["idUsuario"]),
+                                idCliente = Convert.ToInt32(dr["idCliente"])
+                            });
+                        }
+
+                    }
+                    return listaCliente;
+                }
+                catch (Exception ex)
+                {
+                    return listaCliente;
+                }
+            }
+        }
+
         public static bool Registrar(Usuario oUsuario)
         {
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
