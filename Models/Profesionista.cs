@@ -12,6 +12,13 @@ namespace ServicioApi.Models
         public int idProfesion { get; set; }
         public int estatus { get; set; }
         public int idUsuario { get; set; }
+        public string correo { get; set; }
+        public string contrasenia { get; set; }
+        public string nombre { get; set; }
+
+        public string apellidoPaterno { get; set; }
+        public string apellidoMaterno { get; set; }
+        public int idRol { get; set; }
 
     }
 }

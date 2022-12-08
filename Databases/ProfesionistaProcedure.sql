@@ -32,10 +32,30 @@ go
 create procedure prof_registrar(
 @descripcion varchar(5000),
 @idProfesion int NULL,
-@idUsuario int NULL
+
+@correo varchar(100),
+@contrasenia varchar(100),
+@nombre varchar(100),
+@apellidoPaterno varchar(100),
+@apellidoMaterno varchar(100)
 )
 as
 begin
+
+insert into Usuario(correo,contrasenia,nombre,apellidoPaterno,apellidoMaterno,estatus,idRol)
+values
+(
+@correo,
+@contrasenia,
+@nombre,
+@apellidoPaterno,
+@apellidoMaterno,
+1,
+3
+)
+
+DECLARE @idUsuario int;
+SET @idUsuario = (SELECT MAX(idUsuario) AS LastID FROM Usuario);
 
 insert into Profesionista(descripcion,idProfesion,estatus,idUsuario)
 values
@@ -55,10 +75,24 @@ create procedure prof_modificar(
 @idProfesionista int,
 @descripcion varchar(5000),
 @idProfesion int NULL,
-@idUsuario int NULL
+@idUsuario int ,
+
+@correo varchar(100),
+@contrasenia varchar(100),
+@nombre varchar(100),
+@apellidoPaterno varchar(100),
+@apellidoMaterno varchar(100)
 )
 as
 begin
+
+update Usuario set 
+correo = @correo,
+contrasenia = @contrasenia,
+nombre = @nombre,
+apellidoPaterno = @apellidoPaterno,
+apellidoMaterno = @apellidoMaterno
+where idUsuario = @idUsuario
 
 update Profesionista set 
 descripcion = @descripcion,
@@ -76,7 +110,7 @@ create procedure prof_obtener(@idProfesionista int)
 as
 begin
 
-select * from Profesionista where idProfesionista = @idProfesionista
+select * from Usuario us join Profesionista pr on us.idUsuario = pr.idUsuario  where idProfesionista = @idProfesionista
 end
 
 --******** PROCEDIMIENTOS PARA LISTAR TODO********--
@@ -86,7 +120,8 @@ create procedure prof_listar
 as
 begin
 
-select * from Profesionista
+select * from Usuario us join Profesionista pr on us.idUsuario = pr.idUsuario
+
 end
 
 go
@@ -96,7 +131,8 @@ go
 go
 
 create procedure prof_eliminar(
-@idProfesionista int
+@idProfesionista int,
+@idUsuario int
 )
 as
 begin
@@ -105,6 +141,12 @@ update Profesionista set
 estatus = 0
 where idProfesionista = @idProfesionista
 
+update Usuario set 
+estatus = 0
+where idUsuario = @idUsuario
+
 end
 
 go
+
+

@@ -18,7 +18,12 @@ namespace ServicioApi.Data
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@descripcion", oProf.descripcion);
                 cmd.Parameters.AddWithValue("@idProfesion", oProf.idProfesion);
-                cmd.Parameters.AddWithValue("@idUsuario", oProf.idUsuario);
+
+                cmd.Parameters.AddWithValue("@correo", oProf.correo);
+                cmd.Parameters.AddWithValue("@contrasenia", oProf.contrasenia);
+                cmd.Parameters.AddWithValue("@nombre", oProf.nombre);
+                cmd.Parameters.AddWithValue("@apellidoPaterno", oProf.apellidoPaterno);
+                cmd.Parameters.AddWithValue("@apellidoMaterno", oProf.apellidoMaterno);
                 try
                 {
                     oConexion.Open();
@@ -43,6 +48,12 @@ namespace ServicioApi.Data
                 cmd.Parameters.AddWithValue("@descripcion", oProf.descripcion);
                 cmd.Parameters.AddWithValue("@idProfesion", oProf.idProfesion);
                 cmd.Parameters.AddWithValue("@idUsuario", oProf.idUsuario);
+
+                cmd.Parameters.AddWithValue("@correo", oProf.correo);
+                cmd.Parameters.AddWithValue("@contrasenia", oProf.contrasenia);
+                cmd.Parameters.AddWithValue("@nombre", oProf.nombre);
+                cmd.Parameters.AddWithValue("@apellidoPaterno", oProf.apellidoPaterno);
+                cmd.Parameters.AddWithValue("@apellidoMaterno", oProf.apellidoMaterno);
 
                 try
                 {
@@ -80,7 +91,14 @@ namespace ServicioApi.Data
                                 descripcion = dr["descripcion"].ToString(),
                                 idProfesion = Convert.ToInt32(dr["idProfesion"]),
                                 estatus = Convert.ToInt32(dr["estatus"]),
-                                idUsuario = Convert.ToInt32(dr["idUsuario"])
+                                idUsuario = Convert.ToInt32(dr["idUsuario"]),
+
+                                correo = dr["correo"].ToString(),
+                                contrasenia = dr["contrasenia"].ToString(),
+                                nombre = dr["nombre"].ToString(),
+                                apellidoPaterno = dr["apellidoPaterno"].ToString(),
+                                apellidoMaterno = dr["apellidoMaterno"].ToString(),
+                                idRol = Convert.ToInt32(dr["idRol"]),
                             });
                         }
 
@@ -118,7 +136,14 @@ namespace ServicioApi.Data
                                 descripcion = dr["descripcion"].ToString(),
                                 idProfesion = Convert.ToInt32(dr["idProfesion"]),
                                 estatus = Convert.ToInt32(dr["estatus"]),
-                                idUsuario = Convert.ToInt32(dr["idUsuario"])
+                                idUsuario = Convert.ToInt32(dr["idUsuario"]),
+
+                                correo = dr["correo"].ToString(),
+                                contrasenia = dr["contrasenia"].ToString(),
+                                nombre = dr["nombre"].ToString(),
+                                apellidoPaterno = dr["apellidoPaterno"].ToString(),
+                                apellidoMaterno = dr["apellidoMaterno"].ToString(),
+                                idRol = Convert.ToInt32(dr["idRol"]),
                             });
                         }
 
@@ -132,13 +157,15 @@ namespace ServicioApi.Data
             }
         }
 
-        public static bool Eliminar(int idProfesionista)
+        public static bool Eliminar(int idProfesionista, int idUsuario)
         {
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
                 SqlCommand cmd = new SqlCommand("prof_eliminar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@idProfesionista", idProfesionista);
+                cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+
 
                 try
                 {
