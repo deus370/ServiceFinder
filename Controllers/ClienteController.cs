@@ -16,7 +16,7 @@ namespace ServicioApi.Controllers
             return ClienteData.Listar();
         }
 
-        public List<Usuario> Get(int id)
+        public List<Cliente> Get(int id)
         {
             return ClienteData.Obtener(id);
         }

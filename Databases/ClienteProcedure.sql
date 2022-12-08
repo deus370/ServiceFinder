@@ -126,3 +126,5 @@ begin
 select * from Usuario us join Cliente cl on us.idUsuario = cl.idUsuario  where cl.idUsuario = @idUsuario
 
 end
+
+go 

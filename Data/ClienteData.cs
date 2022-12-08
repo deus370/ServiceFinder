@@ -123,12 +123,12 @@ namespace ServicioApi.Data
             }
         }
 
-        public static List<Usuario> Obtener(int idUsuario)
+        public static List<Cliente> Obtener(int idUsuario)
         {
-            List<Usuario> ListaProf = new List<Usuario>();
+            List<Cliente> listaCliente = new List<Cliente>();
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
-                SqlCommand cmd = new SqlCommand("prof_obtenerPorUsuario", oConexion);
+                SqlCommand cmd = new SqlCommand("cli_obtenerCliente", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
 
@@ -142,25 +142,19 @@ namespace ServicioApi.Data
 
                         while (dr.Read())
                         {
-                            ListaProf.Add(new Usuario()
+                            listaCliente.Add(new Cliente()
                             {
                                 idUsuario = Convert.ToInt32(dr["idUsuario"]),
-                                nombre = dr["nombre"].ToString(),
-                                apellidoPaterno = dr["apellidoPaterno"].ToString(),
-                                apellidoMaterno = dr["apellidoMaterno"].ToString(),
-                                correo = dr["correo"].ToString(),
-                                contrasenia = dr["contrasenia"].ToString(),
-                                estatus = Convert.ToInt32(dr["estatus"]),
-                                idRol = Convert.ToInt32(dr["idRol"]),
+                                idCliente = Convert.ToInt32(dr["idCliente"])
                             });
                         }
 
                     }
-                    return ListaProf;
+                    return listaCliente;
                 }
                 catch (Exception ex)
                 {
-                    return ListaProf;
+                    return listaCliente;
                 }
             }
         }
