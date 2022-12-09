@@ -80,3 +80,8 @@ CREATE TABLE Logs(
 	descripcion varchar(5000) NULL,
 	idUsuario int Null
 )
+
+CREATE TABLE Estatus(
+	idEstatus int primary key identity NOT NULL,
+	estatus int Null
+)
