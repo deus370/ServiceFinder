@@ -8,6 +8,6 @@ namespace ServicioApi.Models
     public class Estatus
     {
         public int idEstatus { get; set; }
-        public int estatus { get; set; }
+        public string estatus { get; set; }
     }
 }

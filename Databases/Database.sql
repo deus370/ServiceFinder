@@ -83,5 +83,5 @@ CREATE TABLE Logs(
 
 CREATE TABLE Estatus(
 	idEstatus int primary key identity NOT NULL,
-	estatus int Null
+	estatus varchar(100) Null
 )

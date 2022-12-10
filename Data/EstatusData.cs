@@ -72,7 +72,7 @@ namespace ServicioApi.Data
                             ListaEstatus.Add(new Estatus()
                             {
                                 idEstatus = Convert.ToInt32(dr["idEstatus"]),
-                                estatus = Convert.ToInt32(dr["estatus"])
+                                estatus = dr["estatus"].ToString()
                             });
                         }
 
@@ -107,7 +107,7 @@ namespace ServicioApi.Data
                             ListaEstatus.Add(new Estatus()
                             {
                                 idEstatus = Convert.ToInt32(dr["idEstatus"]),
-                                estatus = Convert.ToInt32(dr["estatus"])
+                                estatus = dr["estatus"].ToString()
                             });
                         }
 
