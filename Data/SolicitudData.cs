@@ -1,11 +1,8 @@
-﻿using ServicioApi.Data;
-using ServicioApi.Models;
+﻿using ServicioApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace ServicioApi.Data
 {
@@ -17,7 +14,7 @@ namespace ServicioApi.Data
             {
                 SqlCommand cmd = new SqlCommand("sol_InsertarSolicitud", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@fechaSolicitud", oSolicitud.fechaSolicitud);
+                cmd.Parameters.AddWithValue("@fecha", oSolicitud.fechaSolicitud);
                 cmd.Parameters.AddWithValue("@descripcion", oSolicitud.descripcion);
                 cmd.Parameters.AddWithValue("@telefono", oSolicitud.telefono);
                 cmd.Parameters.AddWithValue("@idCliente", oSolicitud.idCliente);
@@ -162,7 +159,7 @@ namespace ServicioApi.Data
                             oListarSolicitud.Add(new Solicitud()
                             {
                                 idSolicitud = Convert.ToInt32(dr["idSolicitud"]),
-                                fechaSolicitud = Convert.ToDateTime(dr["fechaSolicitud"]),
+                                fechaSolicitud = Convert.ToDateTime(dr["fecha"]),
                                 descripcion = Convert.ToString(dr["descripcion"]),
                                 telefono = Convert.ToString(dr["telefono"]),
                                 idCliente = Convert.ToInt32(dr["idCliente"]),
