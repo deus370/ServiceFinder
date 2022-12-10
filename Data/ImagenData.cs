@@ -1,22 +1,21 @@
 ﻿using ServicioApi.Models;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
 
 namespace ServicioApi.Data
 {
     public class ImagenData
     {
-        public static byte[] ObtenerImagen(int idProfesionista)
+        public static List<Imagen> ObtenerImagen(int idProfesionista)
         {
+            List<Imagen> oListaImagen = new List<Imagen>();
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
                 SqlCommand cmd = new SqlCommand("img_obtener", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@IdProfesionista", idProfesionista);
-                byte[] imagen = null;
                 try
                 {
                     oConexion.Open();
@@ -26,14 +25,19 @@ namespace ServicioApi.Data
                     {
                         while (dr.Read())
                         {
-                            imagen = (byte[])dr["imagen"];
+                            oListaImagen.Add(new Imagen()
+                            {
+                                _Imagen = Convert.ToBase64String((byte[])dr["imagen"]),
+                                idProfesionista= Convert.ToInt32(dr["idProfesionista"]),
+                                idImagen = Convert.ToInt32(dr["idImagen"]),
+                            }) ;
                         }
                     }
-                    return imagen;
+                    return oListaImagen;
                 }
                 catch (Exception ex)
                 {
-                    return imagen;
+                    return oListaImagen;
                 }
             }
         }
@@ -88,7 +92,7 @@ namespace ServicioApi.Data
             {
                 SqlCommand cmd = new SqlCommand("img_eliminar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@IdProfesionista", id);
+                cmd.Parameters.AddWithValue("@IdImagen", id);
                 try
                 {
                     oConexion.Open();

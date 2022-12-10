@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace ServicioApi.Data
 {
@@ -87,14 +85,14 @@ namespace ServicioApi.Data
                 }
             }
         }
-        public static List<Profesion> Obtener(int idUsuario)
+        public static List<Profesion> Obtener(int idProfesion)
         {
             List<Profesion> ListaProfesion = new List<Profesion>();
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
                 SqlCommand cmd = new SqlCommand("profesion_obtener", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+                cmd.Parameters.AddWithValue("@idProf", idProfesion);
 
                 try
                 {

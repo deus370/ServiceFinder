@@ -1,6 +1,6 @@
 ﻿using ServicioApi.Data;
 using ServicioApi.Models;
-using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -11,23 +11,14 @@ namespace ServicioApi.Controllers
     public class ImagenController : ApiController
     {
         // GET: api/Imagen
-        public HttpResponseMessage Get([FromUri] int id)
+        public List<Imagen> Get([FromUri] int id)
         {
-            HttpResponseMessage response = new HttpResponseMessage();
-            byte[] b = (ImagenData.ObtenerImagen(id));
-            if (b == null)
-            {
-                response.StatusCode = HttpStatusCode.NotFound;
-                return response;
-            }
-            response.Content = new ByteArrayContent(b);
-            response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/png");
-            response.Content.LoadIntoBufferAsync(b.Length).Wait();
-            return response;
+ 
+            return ImagenData.ObtenerImagen(id);
         }
 
         // POST: api/Imagen
-        public bool Post([FromBody]Imagen imagen)
+        public bool Post([FromBody] Imagen imagen)
         {
             return ImagenData.Registrar(imagen);
         }
@@ -39,9 +30,9 @@ namespace ServicioApi.Controllers
         }
 
         // DELETE: api/Imagen/5
-        public bool Delete(int idProfesionista)
+        public bool Delete(int id)
         {
-            return ImagenData.Eliminar(idProfesionista);
+            return ImagenData.Eliminar(id);
         }
     }
 }

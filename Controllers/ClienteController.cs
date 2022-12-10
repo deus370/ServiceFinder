@@ -38,5 +38,9 @@ namespace ServicioApi.Controllers
             return ClienteData.Eliminar(id);
         }
 
+        public List<Cliente> Get(int id)
+        {
+            return ClienteData.Obtener(id);
+        }
     }
 }
